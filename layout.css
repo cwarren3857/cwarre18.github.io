@@ -1,0 +1,82 @@
+
+/* Craig Warren, 4/21/2024, project part 1 */
+/* Navigation */
+nav {
+    background-color: #222;
+    padding: 10px;
+    float: left; /* Floated layout */
+    width: 30%;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+/* Contextual Attribute Selectors */
+nav ul li a[data-category="home"] {
+    color: red; /* Example styling */
+}
+
+section {
+    float: left;
+    width: 70%;
+    position: relative; /* Relative positioning */
+}
+
+/* Overflow handling */
+.overflow-container {
+    width: 200px;
+    height: 100px;
+    overflow: scroll;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    /* For smaller screens */
+    section, nav {
+        width: 100%;
+        float: none;
+        position: static; /* Reset position */
+    }
+}
+
+/* Now Showing Movies Display */
+.now-showing {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+    grid-gap: 20px; /* Gap between grid items */
+}
+
+.now-showing li {
+    padding: 20px;
+    text-align: center;
+}
+
+.now-showing li img {
+    max-width: 100%;
+    height: 200px; /* Set fixed height for all images */
+}
+
+/* Concession stand items */
+section.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Automatically adjust columns based on available space */
+    grid-gap: 20px; 
+}
+
+.concession-item {
+    text-align: center;
+}
+
+.concession-item img {
+    max-width: 100%;
+    height: 150px; /* Set fixed height for all images */
+    object-fit: cover; 
+}

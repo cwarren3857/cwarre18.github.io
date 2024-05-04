@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<!-- Craig Warren, 4/21/2024, project part 1 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warren Cinemas - Booking</title>
+	<link rel="stylesheet" href="formatting.css">
+	<link rel="stylesheet" href="layout.css">
+
+</head>
+<body>
+    <!-- Field sets and form -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="concessions.html">Concessions</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="upcoming.html">Upcoming Releases</a></li>
+        </ul>
+    </nav>
+    <section>
+        <h1>Booking Information</h1>
+        <form action="submit_booking.php" method="post">
+            <fieldset>
+                <legend>Personal Information</legend>
+                <!-- Text input -->
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <!-- Email input -->
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <!-- Date input -->
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+                <!-- Mobile keyboard type (e.g. number) -->
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required>
+            </fieldset>
+            <fieldset>
+                <legend>Movie Selection</legend>
+                <!-- Selection list -->
+                <label for="movie">Select a movie:</label>
+                <select id="movie" name="movie" required onchange="populateTimes()">
+                    <option value="">Select a movie</option>
+                    <option value="The Lord of the Rings">The Lord of the Rings</option>
+                    <option value="Bladerunner 2049">Bladerunner 2049</option>
+                    <option value="They Shall Not Grow Old">They Shall Not Grow Old</option>
+                </select>
+
+                <!-- Dynamic time selector -->
+                <label for="time">Select a time:</label>
+                <select id="time" name="time" required>
+                    <option value="">Select a time</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <legend>Preferences</legend>
+                <!-- Radio buttons -->
+                <label>Preferred Seat Type:</label><br>
+                <label for="standard">Standard</label>
+                <input type="radio" id="standard" name="seat" value="standard">
+                <label for="premium">Premium</label>
+                <input type="radio" id="premium" name="seat" value="premium">
+                <label for="vip">VIP</label>
+                <input type="radio" id="vip" name="seat" value="vip">
+                
+                <!-- Spinners -->
+                <label for="quantity">Number of Tickets:</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="10">
+                
+                <!-- Range slider -->
+                <label for="rating">Movie Rating (1-10):</label>
+                <input type="range" id="rating" name="rating" min="1" max="10">
+                
+                <!-- Checkboxes -->
+                <label>Additional Services:</label><br>
+                <input type="checkbox" id="popcorn" name="popcorn" value="popcorn">
+                <label for="popcorn">Popcorn</label>
+                <input type="checkbox" id="soda" name="soda" value="soda">
+                <label for="soda">Soda</label>
+                <input type="checkbox" id="candy" name="candy" value="candy">
+                <label for="candy">Candy</label>
+            </fieldset>
+            <!-- Submit and reset buttons -->
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </form>
+        <!-- Text area -->
+        <textarea id="comments" name="comments" rows="4" cols="50" placeholder="Additional Comments"></textarea>
+    </section>
+    <footer>
+        <p>&copy; 2024 Warren Cinemas. All rights reserved.</p>
+    </footer>
+    <script>
+        // JavaScript function to populate movie showtimes
+        const showtimes = {
+            "The Lord of the Rings": ["12:00 PM", "3:00 PM", "6:00 PM"],
+            "Bladerunner 2049": ["1:00 PM", "4:00 PM", "7:00 PM"],
+            "They Shall Not Grow Old": ["2:00 PM", "5:00 PM", "8:00 PM"]
+        };
+
+        function populateTimes() {
+            const movieSelect = document.getElementById("movie");
+            const timeSelect = document.getElementById("time");
+            const selectedMovie = movieSelect.value;
+
+            // Clear previous options
+            timeSelect.innerHTML = "<option value=''>Select a time</option>";
+
+            // Populate time options based on the selected movie
+            if (selectedMovie in showtimes) {
+                showtimes[selectedMovie].forEach(time => {
+                    const option = document.createElement("option");
+                    option.value = time;
+                    option.text = time;
+                    timeSelect.appendChild(option);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- Craig Warren, 4/21/2024, project part 2 -->
+<html>
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warren Cinemas - Upcoming Releases</title>
+    <!-- Link to CSS files -->
+    <link rel="stylesheet" href="formatting.css">
+	<link rel="stylesheet" href="layout.css">
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="concessions.html">Concessions</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="upcoming.html">Upcoming Releases</a></li>
+        </ul>
+    </nav>
+    <!-- Main content -->
+    <section>
+        <h1>New and Upcoming Releases</h1>
+        <div id="upcomingMovies">
+            <h2>Upcoming Movies</h2>
+            <ul>
+                <li>
+                    <strong>Title:</strong> The Avengers: Endgame 2
+                    <br>
+                    <strong>Release Date:</strong> May 10, 2024
+                </li>
+                <li>
+                    <strong>Title:</strong> Jurassic World: The Lost Kingdom
+                    <br>
+                    <strong>Release Date:</strong> May 17, 2024
+                </li>
+            </ul>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Warren Cinemas. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript Section -->
+    <script>
+        // Tutorial 9 - JavaScript
+        
+        // Function to get current date and time
+        function getCurrentDateTime() {
+            const currentDateTime = new Date();
+            alert("Current Date and Time: " + currentDateTime);
+        }
+
+        // Function to display upcoming movies
+        function displayUpcomingMovies() {
+            const upcomingMoviesElement = document.getElementById("upcomingMovies");
+            alert("Upcoming Movies: \n\n" + upcomingMoviesElement.innerText);
+        }
+
+        // Call the function to display upcoming movies
+        displayUpcomingMovies();
+
+        // Math method example
+        const randomNumber = Math.random(); // Generates a random number between 0 and 1
+        alert("Random Number: " + randomNumber);
+
+        // Delayed command
+        setTimeout(() => {
+            alert("This message is delayed.");
+        }, 3000); // Delayed by 3000 milliseconds (3 seconds)
+
+        // Interval command
+        setInterval(() => {
+            alert("This message repeats every 5 seconds.");
+        }, 5000); // Repeats every 5000 milliseconds (5 seconds)
+
+        // Convert between number and text
+        const number = 42;
+        const textFromNumber = number.toString();
+        alert("Number converted to text: " + textFromNumber);
+
+        const text = "123";
+        const numberFromText = parseInt(text);
+        alert("Text converted to number: " + numberFromText);
+
+        // Countdown function
+        function countdown() {
+            let seconds = 10;
+            const countdownInterval = setInterval(() => {
+                if (seconds > 0) {
+                    alert("Countdown: " + seconds + " seconds remaining.");
+                    seconds--;
+                } else {
+                    clearInterval(countdownInterval);
+                    alert("Countdown finished.");
+                }
+            }, 1000); // Updates every 1000 milliseconds (1 second)
+        }
+
+        // Call the countdown function
+        countdown();
+    </script>
+</body>
+</html>
